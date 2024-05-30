@@ -1,5 +1,6 @@
 from core import Authenticator, Communicator, DeviceManager, Encryptor, Logger, RegistrationManager, Scheduler
 from config.config import config
+import random
 
 
 def main():
@@ -10,8 +11,8 @@ def main():
     logger = Logger()
     registration_manager = RegistrationManager(config.SECRET_KEY)
 
-    device_id = 'device4'
-    device_info = 'Device 4 Info'
+    device_id = str(random.randint(0, 5000))
+    device_info = f'Device {device_id} Info'
     token = registration_manager.register_device(device_id, device_info)
     logger.log(f'{device_id} registered with token: {token}')
 
